@@ -1,5 +1,3 @@
-// Problem -- 01
-
 function formatString(input: string, toUpper?: boolean) : string {
     if(toUpper === false){
         return input.toLowerCase();
@@ -15,16 +13,6 @@ console.log(formatString("Hello"));
 console.log(formatString("Hello", true)); 
 console.log(formatString("Hello", false));
 
-
-
-
-
-
-
-
-
-
-// Problem -- 02
 
 
 const books = [
@@ -45,13 +33,6 @@ const books = [
 
 
 
-
-
-
-
-//  Problem -- 03
-
-
 function concatenateArrays <T>(...arrays : T [][]) : T [] {
     return arrays.flat();
 }
@@ -60,13 +41,6 @@ console.log(concatenateArrays(["a", "b"], ["c"]));
 console.log(concatenateArrays([1, 2], [3, 4], [5]));   
 
 
-
-
-
-
-
-
-// Problem -- 04
 
 
 class Vehical {
@@ -107,8 +81,6 @@ console.log(myCar.getModel());
 
 
 
-// 5
-
 
 function processValue(value: string | number): number{
     if(typeof value === "number"){
@@ -125,12 +97,76 @@ console.log(processValue(10));
 
 
 
-// 6
+interface Product {
+    name: string;
+    price: number;
+  }
+  
+  function getMostExpensiveProduct(products: Product[]): Product | null{
+    if(products.length === 0){
+        return null;
+    }
+
+    let mostExpensive = products[0]
+
+    for(let i=1; i<products.length; i++){
+        if(products[i].price> mostExpensive.price){
+            mostExpensive = products[i];
+        }
+    }
+
+    return mostExpensive;
+  }
+
+
+
+  const products = [
+    { name: "Pen", price: 10 },
+    { name: "Notebook", price: 25 },
+    { name: "Bag", price: 50 }
+  ];
+  
+  console.log(getMostExpensiveProduct(products));
+  
+
+
+enum Day {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+  }
+  
+function getDayType(day: Day): string{
+    if(day === Day.Sunday ){
+        return "Weekend";
+    }
+    else{
+        return "Weekday";
+    }
+}
+
+getDayType(Day.Monday);  
+getDayType(Day.Sunday);  
 
 
 
 
 
+async function squareAsync(n: number): Promise<number> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (n < 0) {
+          reject(new Error("Negative number not allowed"));
+        } else {
+          resolve(n * n);
+        }
+      }, 1000); 
+    });
+  }
 
-
-
+  squareAsync(4).then(console.log); 
+  squareAsync(-3).catch(console.error);   
