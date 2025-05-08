@@ -44,7 +44,6 @@ type Person = {
   isStudent: boolean;
 };
 
-// 'keyof Person' results in: "name" | "age" | "isStudent"
 type PersonKeys = keyof Person;
 ```
 
